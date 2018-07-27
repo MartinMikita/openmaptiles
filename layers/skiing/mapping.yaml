@@ -1,0 +1,39 @@
+
+tables:
+  # etldoc: imposm3 -> osm_skiing_aerial_linestring
+  skiing_aerial_linestring:
+    type: linestring
+    fields:
+    - name: osm_id
+      type: id
+    - name: geometry
+      type: geometry
+    - key: aerialway
+      name: class
+      type: string
+    - key: aerialway
+      name: aerialway
+      type: string
+    - key: name
+      name: name
+      type: string
+    - key: aerialway:occupancy
+      name: occupancy
+      type: integer
+    - key: aerialway:capacity
+      name: capacity
+      type: integer
+    - key: aerialway:duration
+      name: duration
+      type: integer
+    mapping:
+      aerialway:
+      - cable_car
+      - gondola
+      - chair_lift
+      - mixed_lift
+      - drag_lift
+      - t-bar
+      - j-bar
+      - platter
+      - magic_carpet
