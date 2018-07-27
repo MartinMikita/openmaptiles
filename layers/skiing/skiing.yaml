@@ -9,7 +9,7 @@ layer:
       description: |
           Distinguish between aerialway values.
           Class is derived from the value of the
-          [`highway`](http://wiki.openstreetmap.org/wiki/Key:aerialway) tag.
+          [`aerialway`](http://wiki.openstreetmap.org/wiki/Key:aerialway) tag.
       values:
       - cable_car
       - gondola
@@ -23,7 +23,7 @@ layer:
   datasource:
     geometry_field: geometry
     srid: 900913
-    query: (SELECT geometry, class, name, occupancy, capacity, duration FROM layer_skiing(!bbox!, z(!scale_denominator!))) AS t
+    query: (SELECT geometry, class, name FROM layer_skiing(!bbox!, z(!scale_denominator!))) AS t
 schema:
   - ./layer.sql
 datasources:
