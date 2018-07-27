@@ -177,7 +177,29 @@ start-tileserver:
 	@echo "* "
 	@echo "***********************************************************"
 	@echo " "
-	docker run -it --rm -v $$(pwd)/data:/data -p 8080:80 klokantech/tileserver-gl
+	docker run -it --rm --name tileserver-gl -v $$(pwd)/data:/data -p 8080:80 klokantech/tileserver-gl
+
+start-postserve:
+	@echo " "
+	@echo "***********************************************************"
+	@echo "* "
+	@echo "* Bring up postserve at localhost:8090/tiles/{z}/{x}/{y}.pbf"
+	@echo "* "
+	@echo "***********************************************************"
+	@echo " "
+	docker-compose up -d postserve
+	docker pull maputnik/editor
+	@echo " "
+	@echo "***********************************************************"
+	@echo "* "
+	@echo "* Start maputnik/editor "
+	@echo "*       ----------------------------> check localhost:8088 "
+	@echo "* "
+	@echo "***********************************************************"
+	@echo " "
+	docker rm -f maputnik_editor || true
+	docker run --name maputnik_editor -d -p 8088:8888 maputnik/editor
+
 
 start-mapbox-studio:
 	docker-compose up mapbox-studio
